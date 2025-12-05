@@ -118,6 +118,62 @@
     }
     .theme-toggle:hover{ transform:translateY(-3px); border-color:rgba(0,234,255,0.2); box-shadow:0 6px 24px rgba(0,234,255,0.06) }
 
+    /* Mobile menu (hamburger) */
+    .hamburger{
+      display:none;
+      width:46px;height:46px;border-radius:10px;border:0;background:rgba(255,255,255,0.03);
+      align-items:center;justify-content:center;cursor:pointer;margin-left:10px;
+    }
+    .hamburger .bar{ display:block; width:20px; height:2px; background:var(--text); margin:3px 0; transition:transform .25s ease, opacity .2s ease; }
+
+    /* Mobile nav overlay */
+    .mobile-nav{
+      display:none;
+      position:fixed; top:68px; right:14px; left:14px;
+      background:linear-gradient(180deg, rgba(10,10,10,0.98), rgba(10,10,10,0.96));
+      border-radius:14px; padding:18px; z-index:1400; box-shadow:0 18px 60px rgba(0,0,0,0.6);
+    }
+    .mobile-nav ul{ display:flex; flex-direction:column; gap:12px; align-items:center; list-style:none; padding:0; margin:0 }
+    .mobile-nav a{ padding:12px 18px; display:block; width:100%; text-align:center; border-radius:10px; font-size:1.05rem; background:transparent; color:var(--text) }
+    .mobile-nav a:hover{ background:rgba(255,255,255,0.02); color:var(--primary) }
+
+    /* When header has .nav-open show mobile-nav and animate hamburger */
+    header.nav-open .mobile-nav{ display:block; animation:menuIn .22s ease both; }
+    header.nav-open .hamburger .bar:nth-child(1){ transform:translateY(5px) rotate(45deg); }
+    header.nav-open .hamburger .bar:nth-child(2){ opacity:0; transform:scaleX(.1); }
+    header.nav-open .hamburger .bar:nth-child(3){ transform:translateY(-5px) rotate(-45deg); }
+
+    @keyframes menuIn{ from{ opacity:0; transform:translateY(-6px) } to{ opacity:1; transform:none } }
+
+    /* Bigger tap targets on mobile */
+    .theme-toggle{ width:48px; height:48px; }
+    .btn{ padding:14px 28px; }
+    .chat-btn{ width:64px;height:64px }
+
+    /* Mobile-specific layout tweaks */
+    @media (max-width:900px){
+      nav ul{ gap:12px; } /* keep desktop nav compact */
+      .hamburger{ display:flex; } /* show hamburger on smaller screens */
+      /* hide desktop inline nav; we'll show mobile-nav instead */
+      nav{ display:none !important; }
+      /* adjust hero spacing */
+      .hero{ padding:80px 5% 40px; }
+      .hero h1{ font-size:clamp(1.8rem,8vw,2.6rem); }
+      .typing-text{ font-size:1rem }
+      .btn{ padding:12px 22px; font-size:0.98rem; }
+      .projects-grid{ gap:18px }
+      .project-media{ max-height:260px; }
+    }
+
+    @media (max-width:420px){
+      .mobile-nav{ top:64px; left:10px; right:10px; padding:14px; }
+      .logo{ font-size:20px }
+      .hero{ padding:70px 4% 34px }
+      .hero h1{ font-size:1.9rem }
+      .typing-text{ min-width:12ch }
+      .btn{ width:100%; justify-content:center }
+    }
+
     /* Hero */
     #particles-js{ position:absolute; inset:0; z-index:1; opacity:0.55; pointer-events:none }
     .hero{ min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative; padding:120px 5% 80px; text-align:center; overflow:visible }
@@ -269,6 +325,8 @@
 
   <header id="header" role="banner" aria-label="Main header">
     <div class="logo">WebDev.</div>
+
+    <!-- Desktop nav remains in DOM but hidden on mobile via CSS -->
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="#home">Trang chủ</a></li>
@@ -278,7 +336,28 @@
         <li><a href="#testimonials">Khách hàng</a></li>
       </ul>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Chuyển đổi theme">🌙</button>
+
+    <div style="display:flex;align-items:center;gap:8px">
+      <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Chuyển đổi theme">🌙</button>
+
+      <!-- hamburger for mobile -->
+      <button class="hamburger" id="mobileMenu" aria-label="Mở menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+
+    <!-- mobile nav overlay -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+      <ul>
+        <li><a href="#home">Trang chủ</a></li>
+        <li><a href="#services">Dịch vụ</a></li>
+        <li><a href="#pricing">Bảng giá</a></li>
+        <li><a href="#projects">Dự án</a></li>
+        <li><a href="#testimonials">Khách hàng</a></li>
+      </ul>
+    </div>
   </header>
 
   <!-- Particles background -->
@@ -555,6 +634,46 @@
     }
 
     // Small enhancement: lazy load images (native) - already set loading="lazy"
+
+    // Mobile menu toggle logic
+    (function(){
+      const headerEl = document.getElementById('header');
+      const mobileBtn = document.getElementById('mobileMenu');
+      const mobileNav = document.getElementById('mobileNav');
+
+      if(!mobileBtn || !mobileNav) return;
+
+      function setOpen(open){
+        headerEl.classList.toggle('nav-open', open);
+        mobileBtn.setAttribute('aria-expanded', String(open));
+        mobileNav.setAttribute('aria-hidden', String(!open));
+      }
+
+      mobileBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = headerEl.classList.contains('nav-open');
+        setOpen(!isOpen);
+      });
+
+      // Close when clicking a link inside mobile nav
+      mobileNav.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', () => setOpen(false));
+      });
+
+      // Close on outside click
+      document.addEventListener('click', (e) => {
+        if(!headerEl.classList.contains('nav-open')) return;
+        if(!headerEl.contains(e.target)) setOpen(false);
+      });
+
+      // Close on resize if switching to desktop
+      window.addEventListener('resize', () => {
+        if(window.innerWidth > 900) setOpen(false);
+      });
+
+      // keyboard: close on Escape
+      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') setOpen(false); });
+    })();
   </script>
 </body>
 </html>

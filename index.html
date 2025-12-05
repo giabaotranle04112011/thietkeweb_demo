@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="WebDev Studio chuyên thiết kế website chuyên nghiệp, chuẩn SEO, tốc độ cao. Nhận thiết kế web bán hàng, web doanh nghiệp, web cá nhân tại Kon Tum & Quảng Ngãi. Giá tốt - Uy tín - Bảo hành." />
+  <meta name="keywords" content="thiết kế web, làm website, thiết kế website chuyên nghiệp, thiết kế web giá rẻ, dịch vụ thiết kế web Kon Tum, thiết kế web Quảng Ngãi, web chuẩn SEO">
+<title>Thiết Kế Web Chuyên Nghiệp | WebDev Studio | Giá Rẻ - Chuẩn SEO</title>
+
+  <!-- Open Graph / Social preview -->
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:title" content="Thiết Kế Website Chuyên Nghiệp - WebDev Studio" />
+  <meta property="og:description" content="Dịch vụ thiết kế website chuẩn SEO, tối ưu tốc độ, giao diện đẹp và hiện đại. WebDev Studio — Kon Tum & Quảng Ngãi." />
+  <meta property="og:image" content="https://yourdomain.com/banner.jpg" />
+  <meta property="og:url" content="https://yourdomain.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- JSON-LD Schema (LocalBusiness) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "WebDev Studio",
+    "image": "https://yourdomain.com/logo.png",
+    "@id": "https://yourdomain.com/#webdev-studio",
+    "url": "https://yourdomain.com",
+    "telephone": "0348707829",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Kon Tum",
+      "addressLocality": "Kon Tum",
+      "addressRegion": "Kon Tum",
+      "addressCountry": "VN"
+    },
+    "description": "Dịch vụ thiết kế website chuyên nghiệp, chuẩn SEO, giá rẻ, giao diện đẹp tại Kon Tum & Quảng Ngãi."
+  }
+  </script>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="" crossorigin="anonymous" />
+
+  <!-- AOS (scroll animations) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+
+  <!-- Particles -->
+  <script defer src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <style>
+    :root{
+      --primary: #00eaff;
+      --secondary: #8a2eff;
+      --bg: #0c0c0c;
+      --card: #0f1113;
+      --text: #e6eef8;
+      --muted: #93a0b5;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.03);
+      --radius: 18px;
+      --transition: 0.45s cubic-bezier(.2,.9,.2,1);
+    }
+
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(10,200,255,0.06), transparent 10%),
+                  radial-gradient(800px 400px at 90% 90%, rgba(138,46,255,0.04), transparent 10%),
+                  var(--bg);
+      color:var(--text);
+      font-family: 'Inter',system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      overflow-x:hidden;
+      transition:background var(--transition), color var(--transition);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar{width:10px;height:10px}
+    ::-webkit-scrollbar-track{background:#0b0b0b}
+    ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--primary),var(--secondary));border-radius:8px}
+
+    /* Header */
+    header{
+      position:fixed;left:0;right:0;top:0;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:20px 5%;z-index:1200;
+      background:linear-gradient(180deg, rgba(10,10,10,0.55), rgba(10,10,10,0.15));
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      transition:padding .28s ease, background .28s ease, box-shadow .28s ease, transform .28s ease;
+    }
+    header.scrolled{ padding:12px 5%; box-shadow: 0 8px 30px rgba(0,0,0,0.6); transform:translateY(0); }
+    .logo{
+      font-family:'Orbitron',sans-serif;
+      font-weight:900;font-size:26px;
+      background:linear-gradient(90deg,var(--primary),#fff,var(--secondary));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      letter-spacing:1px;
+    }
+
+    nav ul{display:flex;gap:28px;align-items:center;list-style:none}
+    nav a{
+      color:var(--text);text-decoration:none;font-weight:600;position:relative;padding:6px 0;
+      transition: color .2s ease;
+    }
+    nav a::after{
+      content:'';position:absolute;left:50%;transform:translateX(-50%);bottom:-8px;height:2px;width:0;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:width .35s ease;
+    }
+    nav a:hover{color:var(--primary)}
+    nav a:hover::after{width:100%}
+
+    .theme-toggle{
+      background:transparent;border:2px solid rgba(255,255,255,0.06);color:var(--text);
+      width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;
+      transition: all .25s ease;
+    }
+    .theme-toggle:hover{ transform:translateY(-3px); border-color:rgba(0,234,255,0.2); box-shadow:0 6px 24px rgba(0,234,255,0.06) }
+
+    /* Hero */
+    #particles-js{ position:absolute; inset:0; z-index:1; opacity:0.55; pointer-events:none }
+    .hero{ min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative; padding:120px 5% 80px; text-align:center; overflow:visible }
+    .hero::before{ content:''; position:absolute; inset:0; background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)); z-index:0 }
+    .hero-content{ position:relative; z-index:2; max-width:1000px }
+    .hero h1{
+      font-family:'Orbitron',sans-serif; font-weight:900;
+      font-size:clamp(2.6rem,7.4vw,5.4rem); margin-bottom:14px;
+      background:linear-gradient(90deg,var(--primary),#fff,var(--secondary));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      line-height:1;
+      text-shadow: 0 6px 30px rgba(0,0,0,0.6);
+    }
+
+    /* Typing loop (multiple phrases) */
+    .typing-wrap{ display:inline-block; position:relative; vertical-align:middle }
+    .typing-text{ font-weight:600; font-size:1.15rem; display:inline-block; min-width:16ch; white-space:nowrap; overflow:hidden; border-right:2px solid var(--primary); padding-right:6px; box-sizing:content-box }
+    .hero p{ font-size:1.1rem; color:var(--text); opacity:0.95; margin-top:18px; max-width:760px; margin-left:auto;margin-right:auto }
+
+    .btn{
+      display:inline-flex;align-items:center;gap:12px;padding:12px 26px;margin-top:26px;border-radius:999px;font-weight:800;
+      background:linear-gradient(90deg,var(--primary),var(--secondary));color:#000;border:none;cursor:pointer;box-shadow:0 12px 40px rgba(0,234,255,0.12);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .btn:hover{ transform:translateY(-6px); box-shadow:0 22px 60px rgba(138,46,255,0.16) }
+
+    /* Sections */
+    section{ padding:110px 5%; position:relative; }
+    h2{
+      text-align:center;font-family:'Orbitron',sans-serif;font-weight:900;font-size:2.6rem;margin-bottom:34px;
+      background:linear-gradient(90deg,var(--primary),var(--secondary));-webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+
+    /* Service grid */
+    .service-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px; max-width:1400px;margin:0 auto }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:26px;border-radius:var(--radius); position:relative; overflow:hidden; transition:transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .45s, border-color .45s;
+      backdrop-filter: blur(6px);
+    }
+    .card:hover{ transform:translateY(-12px); border-color: rgba(0,234,255,0.12); box-shadow: 0 18px 50px rgba(0,0,0,0.6) }
+    .card h3{ font-size:1.1rem; color:var(--primary); margin-bottom:8px }
+    .card p{ color:var(--muted); font-size:0.95rem }
+
+    /* Pricing */
+    .pricing-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px; max-width:1200px;margin:0 auto }
+    .price-card{
+      border-radius:20px;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.03); text-align:center; position:relative; overflow:visible; transition:transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .price-card.popular{ border:2px solid rgba(0,234,255,0.12); transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,234,255,0.06) }
+    .badge{ position:absolute; top:-12px; right:12px; background:linear-gradient(90deg,var(--primary),var(--secondary)); color:#000; padding:8px 18px;font-weight:800;border-radius:16px; font-size:0.85rem }
+    .price-card h3{ font-size:1.25rem; margin-top:6px; margin-bottom:6px; font-weight:800 }
+    .price{ font-size:2.4rem; font-weight:900; color:var(--primary); margin:12px 0 }
+    .price small{ font-size:0.8rem;color:var(--muted);display:block }
+    .price-card ul{ list-style:none; margin:20px 0 16px; padding:0; color:var(--muted) }
+    .price-card ul li{ padding:10px 0; display:flex; align-items:center; justify-content:center; gap:10px }
+
+    /* Projects */
+    .projects-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:26px; max-width:1400px; margin:0 auto }
+    .project{
+      border-radius:18px; overflow:hidden; position:relative; transition:transform .5s ease, box-shadow .5s ease;
+      border:1px solid rgba(255,255,255,0.03); background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      backdrop-filter: blur(6px);
+    }
+    /* new media wrapper keeps a consistent card image area */
+    .project-media{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      aspect-ratio:16/9; /* keeps visual balance */
+      max-height:360px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      overflow:hidden;
+    }
+    .project img{
+      max-width:100%;
+      max-height:100%;
+      width:auto;
+      height:auto;
+      object-fit:contain; /* show full image */
+      transition: transform .45s ease;
+      display:block;
+    }
+    /* optional subtle zoom on hover if image has extra space */
+    .project:hover img{ transform: scale(1.03); }
+
+    @media (max-width:900px){
+      /* ...existing responsive... */
+      .project-media{ aspect-ratio: 4/3; max-height:280px }
+    }
+    @media (max-width:600px){
+      /* ...existing responsive... */
+      .project-media{ aspect-ratio: 3/2; max-height:220px }
+    }
+
+    /* Testimonials */
+    .testimonials{ max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px }
+    .testimonial{ padding:20px; border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.03) }
+    .testimonial p{ color:var(--muted) }
+
+    footer{ padding:48px 5% 70px; text-align:center; border-top:1px solid rgba(255,255,255,0.03); margin-top:40px }
+    .social-links a{ margin:0 10px; color:var(--muted); font-size:20px; transition:transform .25s, color .25s }
+    .social-links a:hover{ color:var(--primary); transform:translateY(-6px) }
+
+    /* Floating Zalo/Chat button */
+    .floating-chat{
+      position:fixed; right:18px; bottom:18px; z-index:1500;
+      display:flex;flex-direction:column;gap:10px;
+    }
+    .chat-btn{
+      width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(90deg,var(--primary),var(--secondary));color:#000;font-weight:800;box-shadow:0 12px 36px rgba(0,0,0,0.5);
+      text-decoration:none;border:0;
+    }
+    .chat-label{ display:none }
+
+    /* Responsive */
+    @media (max-width:900px){
+      nav ul{ gap:16px }
+      .hero{ padding:100px 5% 60px }
+      .project img{ height:220px }
+    }
+    @media (max-width:600px){
+      header{ padding:12px 5% }
+      .logo{ font-size:20px }
+      .hero h1{ font-size:2.2rem }
+      .typing-text{ font-size:0.98rem; min-width:14ch }
+      .chat-label{ display:none }
+    }
+
+    /* Light mode */
+    .light-mode{
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #091322;
+      --muted: #6b7280;
+      --glass: rgba(0,0,0,0.03);
+      background: linear-gradient(120deg, rgba(10,220,255,0.03), rgba(138,46,255,0.02)), #f6f8fb;
+    }
+    .light-mode header{ background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)); border-bottom:1px solid rgba(0,0,0,0.04) }
+    .light-mode .card, .light-mode .price-card, .light-mode .project, .light-mode .testimonial{ background: linear-gradient(180deg, #fff, #fff) }
+  </style>
+</head>
+<body>
+
+  <header id="header" role="banner" aria-label="Main header">
+    <div class="logo">WebDev.</div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#home">Trang chủ</a></li>
+        <li><a href="#services">Dịch vụ</a></li>
+        <li><a href="#pricing">Bảng giá</a></li>
+        <li><a href="#projects">Dự án</a></li>
+        <li><a href="#testimonials">Khách hàng</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Chuyển đổi theme">🌙</button>
+  </header>
+
+  <!-- Particles background -->
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content" data-aos="fade-up" data-aos-delay="150">
+      <h1>Thiết Kế Website Chuyên Nghiệp – WebDev Studio</h1>
+
+      <div class="typing-wrap" aria-hidden="true" style="margin:auto">
+        <span class="typing-text" id="typingText">Website chuẩn SEO, tải nhanh, giao diện đẹp</span>
+      </div>
+
+      <p>Website chuẩn SEO, tải nhanh như chớp, giao diện hiện đại — giúp khách hàng tìm thấy bạn 24/7 tại Kon Tum & Quảng Ngãi.</p>
+
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px">
+        <a class="btn" href="tel:0348707829"><i class="fa-solid fa-phone"></i> Gọi ngay 0348 707 829</a>
+        <a class="btn" href="#pricing" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)"><i class="fa-solid fa-list"></i> Xem bảng giá</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 data-aos="fade-up">Dịch Vụ Nổi Bật</h2>
+    <div class="service-grid" data-aos="fade-up" data-aos-delay="80">
+      <div class="card" data-aos="zoom-in">
+        <h3>🎨 Thiết Kế UI/UX Hiện Đại</h3>
+        <p>Giao diện đẹp, chuẩn mobile-first, khách mê từ cái nhìn đầu tiên.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="40">
+        <h3>⚡ Lập Trình Tối Ưu</h3>
+        <p>Tốc độ tải tối ưu, code sạch, bảo mật cao, dễ nâng cấp.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="80">
+        <h3>🚀 SEO Top Google</h3>
+        <p>Chiến lược SEO địa phương (Kon Tum, Quảng Ngãi) & SEO toàn quốc.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="120">
+        <h3>📱 Web App & PWA</h3>
+        <p>Ứng dụng website cài được như app, hỗ trợ offline & push.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="160">
+        <h3>🛒 Website Bán Hàng</h3>
+        <p>Tích hợp thanh toán: Momo, ZaloPay; quản lý đơn & kho tự động.</p>
+      </div>
+      <div class="card" data-aos="zoom-in" data-aos-delay="200">
+        <h3>🔧 Bảo Trì 24/7</h3>
+        <p>Hỗ trợ chăm sóc, cập nhật tính năng, bảo mật định kỳ.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <h2 data-aos="fade-up">Bảng Giá Thiết Kế Website</h2>
+    <div class="pricing-grid" data-aos="fade-up" data-aos-delay="80">
+      <div class="price-card" data-aos="fade-right">
+        <h3>Gói Cơ Bản</h3>
+        <div class="price"><span>₫</span>4.9 <small class="unit">triệu</small></div>
+        <ul>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> 5-8 trang chuẩn SEO</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Tối ưu mobile & tốc độ</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Hosting + Domain 1 năm</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Bảo hành 12 tháng</li>
+        </ul>
+        <a href="tel:0909123456" class="btn">Chọn gói</a>
+      </div>
+
+      <div class="price-card popular" data-aos="zoom-in">
+        <div class="badge">Phổ biến</div>
+        <h3>Gói Pro</h3>
+        <div class="price"><span>₫</span>8.9 <small class="unit">triệu</small></div>
+        <ul>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Thiết kế không giới hạn trang</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> SEO 5-10 từ khóa trọng điểm</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Tặng PWA & Chat tích hợp</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Bảo hành nâng cấp trọn đời</li>
+        </ul>
+        <a href="tel:0909123456" class="btn">Chọn gói</a>
+      </div>
+
+      <div class="price-card" data-aos="fade-left">
+        <h3>Gói Doanh Nghiệp</h3>
+        <div class="price"><span>₫</span>15+ <small class="unit">triệu</small></div>
+        <ul>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Hệ thống quản trị & CRM</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Tích hợp ERP / API nâng cao</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> Hỗ trợ ưu tiên & SLA</li>
+          <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> SEO & marketing toàn quốc</li>
+        </ul>
+        <a href="tel:0909123456" class="btn">Liên hệ tư vấn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 data-aos="fade-up">Dự Án Đã Hoàn Thành</h2>
+    <div class="projects-grid" data-aos="fade-up" data-aos-delay="80">
+      <!-- replaced each direct <img> with .project-media wrapper -->
+      <div class="project" data-aos="flip-left">
+        <div class="project-media">
+          <img src="hcmut.png" alt="Restaurant HCM-Út website showcasing online table reservation system with QR menu integration and food delivery ordering interface" loading="lazy">
+        </div>
+        <div class="project-info">
+          <h3>Nhà hàng HCM-Út</h3>
+          <p>Đặt bàn online, QR menu, tích hợp đặt giao hàng.</p>
+        </div>
+      </div>
+
+      <div class="project" data-aos="flip-left" data-aos-delay="60">
+        <div class="project-media">
+          <img src="iachim.png" alt="Trường học" loading="lazy">
+        </div>
+        <div class="project-info">
+          <h3>THCS Đoàn Kết</h3>
+          <p>Cổng thông tin + tuyển sinh trực tuyến, quản trị mạnh mẽ.</p>
+        </div>
+      </div>
+
+      <div class="project" data-aos="flip-left" data-aos-delay="120">
+        <div class="project-media">
+          <img src="day.png" alt="Shop thời trang" loading="lazy">
+        </div>
+        <div class="project-info">
+          <h3>Dạy học online</h3>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <h2 data-aos="fade-up">Khách Hàng Nói Gì</h2>
+    <div class="testimonials" data-aos="fade-up" data-aos-delay="80">
+      <div class="testimonial" data-aos="fade-right">
+        <p>"Giao diện đẹp, khách hàng đặt nhiều hơn. Team support nhiệt tình!"</p>
+        <strong style="display:block;margin-top:8px">— Quán Cà Phê Mộc</strong>
+      </div>
+      <div class="testimonial" data-aos="fade-up" data-aos-delay="40">
+        <p>"SEO lên top trong 2 tháng, lượng truy cập tăng gấp 3."</p>
+        <strong style="display:block;margin-top:8px">— Cửa hàng Thời Trang Lan</strong>
+      </div>
+      <div class="testimonial" data-aos="fade-left" data-aos-delay="80">
+        <p>"Bảo trì nhanh, xử lý sự cố 24/7, rất yên tâm."</p>
+        <strong style="display:block;margin-top:8px">— Công Ty Dịch Vụ FBOS</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <strong>WebDev Studio</strong> — Thiết kế website chuyên nghiệp tại Kon Tum & Quảng Ngãi</p>
+    <div class="social-links" aria-hidden="true">
+      <a href="https://www.facebook.com/gia.bao.tranle.2025?locale=vi_VN" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="http://zalo.me/0348707829" title="Zalo"><i class="fa-brands fa-weixin"></i></a>
+      <a href="https://www.tiktok.com/@giabaotranle" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p style="margin-top:10px">Hotline: <a href="tel:0348707829" style="color:var(--primary);font-weight:800">0348 707 829</a></p>
+  </footer>
+
+  <!-- Floating chat (Zalo/Quick contact) -->
+  <div class="floating-chat" aria-hidden="false">
+    <a class="chat-btn" href="https://zalo.me/0348707829" title="Chat Zalo" target="_blank" rel="noopener noreferrer">
+      <img src="https://upload.wikimedia.org/wikipedia/vi/6/6b/Zalo_logo.png" alt="Zalo" style="width:30px;height:30px;border-radius:6px;"/>
+    </a>
+  </div>
+
+  <!-- External scripts: AOS init & UI logic -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <script>
+    // --- Particles config (init after script loaded) ---
+    function initParticles(){
+      if(window.particlesJS){
+        particlesJS("particles-js", {
+          "particles": {
+            "number":{"value":60,"density":{"enable":true,"value_area":800}},
+            "color":{"value":["#00eaff","#8a2eff","#ffffff"]},
+            "shape":{"type":"circle"},
+            "opacity":{"value":0.35,"random":true},
+            "size":{"value":3,"random":true},
+            "line_linked":{"enable":true,"distance":160,"color":"#00eaff","opacity":0.12,"width":1},
+            "move":{"enable":true,"speed":2}
+          },
+          "interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"}}},
+          "retina_detect":true
+        });
+      }
+    }
+    // Try init particles when available
+    if(window.particlesJS) initParticles();
+    else {
+      // if not yet loaded, wait briefly
+      window.addEventListener('load', initParticles);
+    }
+
+    // --- AOS init ---
+    AOS.init({
+      once: true,
+      duration: 800,
+      easing: 'ease-out-cubic',
+      offset: 100
+    });
+
+    // --- Header shrink on scroll ---
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // --- Theme toggle with smooth transition ---
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      themeToggle.textContent = isLight ? '☀️' : '🌙';
+      themeToggle.setAttribute('aria-pressed', String(isLight));
+      // persist preference
+      try { localStorage.setItem('webdev_theme', isLight ? 'light' : 'dark'); } catch(e){}
+    });
+    // load saved theme
+    try {
+      const saved = localStorage.getItem('webdev_theme');
+      if(saved === 'light') { document.body.classList.add('light-mode'); themeToggle.textContent='☀️'; themeToggle.setAttribute('aria-pressed','true'); }
+    } catch(e){}
+
+    // --- Smooth scroll for internal links ---
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href.length > 1){
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // --- Typing loop (array of phrases) ---
+    (function(){
+      const el = document.getElementById('typingText');
+      const phrases = [
+        'Website chuẩn SEO, tải nhanh, giao diện đẹp',
+        'Tăng uy tín thương hiệu — khách gọi ngay',
+        'Tối ưu tốc độ, tối ưu chuyển đổi (CRO)',
+        'Tích hợp thanh toán: Momo, ZaloPay, Paypal'
+      ];
+      let idx = 0, char = 0, forward = true, delayAfter = 1200;
+
+      function type(){
+        const text = phrases[idx];
+        if(forward){
+          char++;
+          el.textContent = text.slice(0,char);
+          if(char === text.length){ forward = false; setTimeout(type, delayAfter); return; }
+        } else {
+          char--;
+          el.textContent = text.slice(0,char);
+          if(char === 0){ forward = true; idx = (idx+1) % phrases.length; setTimeout(type, 300); return; }
+        }
+        setTimeout(type, forward ? 45 + Math.random()*35 : 18 + Math.random()*30);
+      }
+      // start if element exists
+      if(el) setTimeout(type, 500);
+    })();
+
+    // Accessibility: reduce motion respect
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      document.querySelectorAll('[data-aos]').forEach(el => el.removeAttribute('data-aos'));
+    }
+
+    // Small enhancement: lazy load images (native) - already set loading="lazy"
+  </script>
+</body>
+</html>

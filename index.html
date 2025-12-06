@@ -27,11 +27,14 @@
     "telephone": "0348707829",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Kon Tum",
+      "streetAddress": "Thôn 5, Xã Đoàn Kết",
       "addressLocality": "Kon Tum",
       "addressRegion": "Kon Tum",
       "addressCountry": "VN"
     },
+    "openingHours": [
+      "Mo-Fr 09:00-17:00"
+    ],
     "description": "Dịch vụ thiết kế website chuyên nghiệp, chuẩn SEO, giá rẻ, giao diện đẹp tại Kon Tum & Quảng Ngãi."
   }
   </script>
@@ -319,6 +322,79 @@
     }
     .light-mode header{ background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7)); border-bottom:1px solid rgba(0,0,0,0.04) }
     .light-mode .card, .light-mode .price-card, .light-mode .project, .light-mode .testimonial{ background: linear-gradient(180deg, #fff, #fff) }
+
+    /* About / Introduction */
+    .about-section{
+      max-width:1100px;
+      margin:30px auto 60px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:22px 26px;
+      border-radius:14px;
+      text-align:left;
+      color:var(--text);
+      backdrop-filter: blur(6px);
+    }
+    .about-grid{ display:flex; gap:22px; align-items:center; flex-wrap:wrap; }
+    .about-grid .about-text{ flex:1 1 420px }
+    .about-grid .about-cta{ flex:0 0 240px; display:flex; align-items:center; justify-content:center }
+    .about-grid h3{ font-family:'Orbitron',sans-serif; margin-bottom:8px; color:var(--primary) }
+    .about-grid p{ color:var(--muted); line-height:1.5 }
+
+    /* Extras: paid add-ons */
+    .extras{
+      max-width:1100px;
+      margin:28px auto 0;
+      display:flex;
+      gap:18px;
+      align-items:stretch;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .extras .extra{
+      flex:1 1 300px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:16px 18px;
+      border-radius:12px;
+      text-align:left;
+      color:var(--text);
+    }
+    .extra h4{ margin:0 0 8px; color:var(--primary); font-size:1.05rem }
+    .extra p{ color:var(--muted); margin:0; font-size:0.95rem }
+
+    @media (max-width:900px){
+      .about-grid{ flex-direction:column; }
+      .about-grid .about-cta{ width:100% }
+      .extras{ padding:0 16px }
+    }
+
+    /* Visit / Gặp trực tiếp */
+    .visit-section{
+      max-width:1100px;
+      margin:18px auto 40px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:18px;
+      border-radius:12px;
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
+      backdrop-filter: blur(6px);
+    }
+    .visit-info{ flex:1 1 320px; color:var(--text) }
+    .visit-info h3{ margin:0 0 6px; color:var(--primary); font-family:'Orbitron',sans-serif; font-size:1.05rem }
+    .visit-info p{ margin:6px 0; color:var(--muted); line-height:1.45 }
+    /* buttons align start after removing map */
+    .visit-actions{ flex:0 0 220px; display:flex;flex-direction:column;gap:10px; align-items:flex-start }
+    .visit-actions .btn{ width:100%; justify-content:center }
+
+    @media (max-width:900px){
+      .visit-section{ flex-direction:column; padding:14px; }
+      .visit-actions{ width:100%; align-items:stretch; }
+    }
+
   </style>
 </head>
 <body>
@@ -378,6 +454,35 @@
         <a class="btn" href="tel:0348707829"><i class="fa-solid fa-phone"></i> Gọi ngay 0348 707 829</a>
         <a class="btn" href="#pricing" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)"><i class="fa-solid fa-list"></i> Xem bảng giá</a>
       </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / GIỚI THIỆU -->
+  <section id="about" class="about-section" aria-labelledby="about-title" data-aos="fade-up" data-aos-delay="80">
+    <div class="about-grid">
+      <div class="about-text">
+        <h3 id="about-title">Giới thiệu — WebDev Studio</h3>
+        <p>Chúng tôi chuyên thiết kế website chuẩn SEO, tối ưu tốc độ và trải nghiệm người dùng. Hỗ trợ trọn gói từ ý tưởng, thiết kế, phát triển đến vận hành. Ưu tiên hiệu suất và chuyển đổi để giúp doanh nghiệp bạn tiếp cận khách hàng nhanh hơn.</p>
+        <p style="margin-top:8px;color:var(--muted)">Phục vụ: website bán hàng, doanh nghiệp, cổng thông tin, web app &amp; PWA. Hỗ trợ tư vấn chiến lược SEO và quảng cáo trả phí (Google Ads) theo yêu cầu.</p>
+      </div>
+      <div class="about-cta">
+        <a class="btn" href="tel:0348707829"><i class="fa-solid fa-phone"></i> Liên hệ tư vấn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT / GẶP TRỰC TIẾP -->
+  <section id="visit" class="visit-section" data-aos="fade-up" data-aos-delay="100" aria-labelledby="visit-title">
+    <div class="visit-info">
+      <h3 id="visit-title">Gặp trực tiếp tại WebDev</h3>
+      <p><strong>Địa điểm:</strong> Thiết Kế Web | WebDev, Thôn 5, Xã Đoàn Kết, Kon Tum.</p>
+      <p><strong>Giờ làm việc:</strong> Thứ 2 - Thứ 6, 15:00 — 20:00 (hoặc hẹn trước cuối tuần).</p>
+      <p style="margin-top:8px;color:var(--muted)">Bạn có thể đến để trao đổi trực tiếp về yêu cầu, ký hợp đồng và thanh toán. Vui lòng gọi trước để đặt lịch hoặc yêu cầu tư vấn tại chỗ.</p>
+    </div>
+
+    <div class="visit-actions">
+      <a class="btn" href="tel:0348707829"><i class="fa-solid fa-phone"></i> Gọi đặt lịch</a>
+      <a class="btn" href="#pricing" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)">Xem dịch vụ &amp; báo giá</a>
     </div>
   </section>
 
@@ -451,6 +556,18 @@
           <li><i class="fa-solid fa-check" style="color:var(--primary)"></i> SEO & marketing toàn quốc</li>
         </ul>
         <a href="tel:0348707829" class="btn">Liên hệ tư vấn</a>
+      </div>
+    </div>
+
+    <!-- Paid add-ons / extras -->
+    <div class="extras" aria-hidden="false" data-aos="fade-up" data-aos-delay="120">
+      <div class="extra">
+        <h4>Hỗ trợ Google Ads (tùy chọn)</h4>
+        <p>Chúng tôi cung cấp dịch vụ triển khai &amp; quản lý chiến dịch Google Ads. Lưu ý: chi phí chạy quảng cáo (ngân sách Ads) sẽ do khách hàng chi trả trực tiếp cho Google; WebDev có phí dịch vụ quản lý chiến dịch (liên hệ để nhận báo giá theo quy mô &amp; mục tiêu).</p>
+      </div>
+      <div class="extra">
+        <h4>Triển khai tên miền &amp; hosting</h4>
+        <p>Đăng ký, cấu hình tên miền và triển khai hosting/SSL có thể tính phí tùy gói. Nếu bạn đã có tên miền/hosting, chúng tôi hỗ trợ triển khai miễn phí trong gói giới hạn — xem chi tiết khi tư vấn.</p>
       </div>
     </div>
   </section>

@@ -395,6 +395,96 @@
       .visit-actions{ width:100%; align-items:stretch; }
     }
 
+    /* Why Choose Us - New Section */
+    #why-choose-us .why-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:24px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .why-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:24px;
+      border-radius:var(--radius);
+      text-align:center;
+      transition:transform .35s ease, box-shadow .35s ease;
+      backdrop-filter:blur(6px);
+    }
+    .why-card:hover{
+      transform:translateY(-8px);
+      box-shadow:0 12px 40px rgba(0,234,255,0.08);
+    }
+    .why-card i{
+      font-size:2.2rem;
+      color:var(--primary);
+      margin-bottom:12px;
+    }
+    .why-card h3{
+      font-size:1.2rem;
+      margin-bottom:10px;
+      color:var(--text);
+    }
+    .why-card p{
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    /* Process Section - New Section */
+    #process .process-steps{
+      display:flex;
+      flex-direction:column;
+      gap:40px;
+      max-width:1000px;
+      margin:0 auto;
+    }
+    .process-step{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
+      border:1px solid rgba(255,255,255,0.03);
+      padding:20px;
+      border-radius:var(--radius);
+      transition:transform .35s ease;
+      backdrop-filter:blur(6px);
+    }
+    .process-step:hover{
+      transform:translateX(8px);
+    }
+    .step-number{
+      flex:0 0 50px;
+      height:50px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(90deg,var(--primary),var(--secondary));
+      color:#000;
+      font-weight:800;
+      border-radius:50%;
+      font-size:1.3rem;
+    }
+    .step-content h3{
+      font-size:1.15rem;
+      margin-bottom:6px;
+      color:var(--primary);
+    }
+    .step-content p{
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    @media (max-width:900px){
+      .process-step{
+        flex-direction:column;
+        text-align:center;
+      }
+      .step-number{
+        margin-bottom:12px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -406,6 +496,8 @@
     <nav aria-label="Main navigation">
       <ul>
         <li><a href="#home">Trang chủ</a></li>
+        <li><a href="#why-choose-us">Tại sao chọn chúng tôi</a></li>
+        <li><a href="#process">Quy trình</a></li>
         <li><a href="#services">Dịch vụ</a></li>
         <li><a href="#pricing">Bảng giá</a></li>
         <li><a href="#projects">Dự án</a></li>
@@ -428,6 +520,8 @@
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
       <ul>
         <li><a href="#home">Trang chủ</a></li>
+        <li><a href="#why-choose-us">Tại sao chọn chúng tôi</a></li>
+        <li><a href="#process">Quy trình</a></li>
         <li><a href="#services">Dịch vụ</a></li>
         <li><a href="#pricing">Bảng giá</a></li>
         <li><a href="#projects">Dự án</a></li>
@@ -453,6 +547,85 @@
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px">
         <a class="btn" href="tel:0348707829"><i class="fa-solid fa-phone"></i> Gọi ngay 0348 707 829</a>
         <a class="btn" href="#pricing" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)"><i class="fa-solid fa-list"></i> Xem bảng giá</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US - New Section -->
+  <section id="why-choose-us">
+    <h2 data-aos="fade-up">Tại Sao Nên Thiết Kế Website Với WebDev Studio</h2>
+    <div class="why-grid" data-aos="fade-up" data-aos-delay="80">
+      <div class="why-card" data-aos="zoom-in">
+        <i class="fa-solid fa-rocket"></i>
+        <h3>Tăng Doanh Số Nhanh Chóng</h3>
+        <p>Website chuyên nghiệp giúp khách hàng dễ dàng tìm kiếm và mua hàng, tăng chuyển đổi lên đến 300% chỉ sau 3 tháng.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="40">
+        <i class="fa-solid fa-search"></i>
+        <h3>Chuẩn SEO, Lên Top Google</h3>
+        <p>Tối ưu hóa từ khóa địa phương (Kon Tum, Quảng Ngãi) và toàn quốc, giúp website của bạn xuất hiện đầu tiên khi khách tìm kiếm.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="80">
+        <i class="fa-solid fa-mobile-alt"></i>
+        <h3>Tương Thích Mọi Thiết Bị</h3>
+        <p>Thiết kế mobile-first, hiển thị đẹp trên điện thoại, máy tính bảng và desktop — khách hàng truy cập dễ dàng mọi lúc.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="120">
+        <i class="fa-solid fa-shield-alt"></i>
+        <h3>An Toàn & Bảo Mật Cao</h3>
+        <p>Tích hợp SSL, bảo vệ dữ liệu khách hàng, chống hack — yên tâm kinh doanh mà không lo rủi ro.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="160">
+        <i class="fa-solid fa-headset"></i>
+        <h3>Hỗ Trợ 24/7</h3>
+        <p>Đội ngũ sẵn sàng hỗ trợ bất kỳ lúc nào, bảo hành trọn đời cho các gói cao cấp.</p>
+      </div>
+      <div class="why-card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fa-solid fa-dollar-sign"></i>
+        <h3>Giá Rẻ, Tiết Kiệm Chi Phí</h3>
+        <p>Gói giá linh hoạt từ 4.9 triệu, tiết kiệm hơn so với thuê nhân sự riêng, nhưng chất lượng chuyên nghiệp.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS - New Section -->
+  <section id="process">
+    <h2 data-aos="fade-up">Quy Trình Thiết Kế Website</h2>
+    <div class="process-steps" data-aos="fade-up" data-aos-delay="80">
+      <div class="process-step" data-aos="fade-right">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Tư Vấn & Phân Tích</h3>
+          <p>Gặp gỡ, lắng nghe ý tưởng của bạn, phân tích nhu cầu kinh doanh và đối thủ cạnh tranh để xây dựng kế hoạch phù hợp.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-right" data-aos-delay="40">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Thiết Kế Giao Diện</h3>
+          <p>Vẽ wireframe và thiết kế UI/UX hiện đại, gửi bản nháp để bạn duyệt và chỉnh sửa đến khi hài lòng 100%.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-right" data-aos-delay="80">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Lập Trình & Phát Triển</h3>
+          <p>Code website với công nghệ tối ưu (HTML5, CSS3, JS, React nếu cần), tích hợp tính năng như SEO, thanh toán, chat.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-right" data-aos-delay="120">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Kiểm Tra & Tối Ưu</h3>
+          <p>Test tốc độ, tương thích thiết bị, bảo mật; tối ưu SEO on-page và tốc độ tải trang dưới 2 giây.</p>
+        </div>
+      </div>
+      <div class="process-step" data-aos="fade-right" data-aos-delay="160">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Bàn Giao & Hỗ Trợ</h3>
+          <p>Triển khai website lên hosting, đào tạo sử dụng; hỗ trợ bảo trì miễn phí 12 tháng và nâng cấp theo nhu cầu.</p>
+        </div>
       </div>
     </div>
   </section>
